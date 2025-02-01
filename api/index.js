@@ -15,8 +15,9 @@ const app = express();
 
 app.use(cors());
 app.use('/hls', express.static(outputDir));
+app.get("/", (req, res) => res.send("Express on Vercel"));
 
-const server = app.listen(8082, () => {
+const server = app.listen(3000, () => {
   console.log("HTTP server is listening on port 8082");
 });
 
@@ -96,3 +97,6 @@ wss.on("connection", (ws) => {
     console.error(`WebSocket error: ${error.message}`);
   });
 });
+
+
+module.exports = app;
